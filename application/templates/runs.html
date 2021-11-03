@@ -3,6 +3,7 @@
 
 {% block content %}
   <h2>AWS Batch Runs</h2>
+  <a href="{{ url_for('frontend.landing_page') }}">Reload</a>
     <div id="repos-panel-group" class="panel-group">
     {% for log, data in logs.items() %}
       <div class="panel panel-default">
