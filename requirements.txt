@@ -1,4 +1,3 @@
--e git+https://github.com/digital-land/frontend.git#egg=digital_land_frontend
 click==7.1.2
 decorator==4.4.2
 Flask==1.1.1
