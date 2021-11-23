@@ -9,8 +9,9 @@ from flask import (
 
 frontend = Blueprint("frontend", __name__, template_folder="templates")
 
-@frontend.route('/home')
+
+@frontend.route("/home")
 @frontend.route("/")
 def logs_page():
     logs = get_log_statuses()
-    return render_template('runs.html', logs=logs)
+    return render_template("runs.html", logs=logs)

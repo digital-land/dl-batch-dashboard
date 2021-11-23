@@ -15,7 +15,7 @@ def create_app(config_filename):
     register_errorhandlers(app)
     register_blueprints(app)
     register_filters(app)
-    #register_templates(app)
+    # register_templates(app)
     return app
 
 
@@ -32,11 +32,17 @@ def register_errorhandlers(app):
 
 def register_blueprints(app):
     from application.blueprints.frontend.views import frontend
+
     app.register_blueprint(frontend)
 
 
 def register_filters(app):
-    from application.utils.filters import format_date, remove_slashes, aws_batch_id_encode
+    from application.utils.filters import (
+        format_date,
+        remove_slashes,
+        aws_batch_id_encode,
+    )
+
     app.add_template_filter(format_date)
     app.add_template_filter(remove_slashes)
     app.add_template_filter(aws_batch_id_encode)
