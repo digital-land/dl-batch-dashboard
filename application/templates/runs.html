@@ -1,23 +1,20 @@
-{% from "partials/event-entry.html" import makeEventEntry -%}
+{% from "partials/collection-entry.html" import makeCollectionEntry -%}
 {% extends 'base.html' %}
 
 {% block content %}
   <h2>AWS Batch Runs</h2>
-  <a href="{{ url_for('frontend.landing_page') }}">Reload</a>
     <div id="repos-panel-group" class="panel-group">
-    {% for log, data in logs.items() %}
+    {% for date, log in logs.items() %}
       <div class="panel panel-default">
-        <div class="panel-heading" data-toggle="collapse" href="#collapse-{{log | remove_slashes}}">
+        <div class="panel-heading" data-toggle="collapse" href="#collapse-{{date}}">
           <h3 class="panel-title">
-            <a>{{log}}</a>
+            <a>{{date}}</a>
           </h3>
-          <p> Run time: {{data['time'] | format_date}}</p>
         </div>
-        <div id="collapse-{{log | remove_slashes}}" class="panel-collapse collapse">
-          <p><a href="https://eu-west-2.console.aws.amazon.com/cloudwatch/home?region=eu-west-2#logsV2:log-groups/log-group/$252Faws$252Fbatch$252Fjob/log-events/{{log | aws_batch_id_encode}}" target="_blank">Go to full log</a></p>
+        <div id="collapse-{{date}}" class="panel-collapse collapse">
           <ul class="list-group">
-            {% for event in data['events'] %}
-              <li class="list-group-item">{{makeEventEntry(event)}}</li>
+            {% for log_key, log_info in log.items() %}
+              <li class="list-group-item">{{makeCollectionEntry(log_key, log_info)}}</li>
             {% endfor %}
           </ul>
         </div>

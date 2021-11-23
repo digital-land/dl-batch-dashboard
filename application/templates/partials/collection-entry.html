@@ -1,0 +1,18 @@
+{% macro makeCollectionEntry(log_key, log_info) %}
+    <h4>{{log_key}}</h4>
+    <table class="build-table {% if log_info['exit_code'] != 0 %} build-failure {% endif %}">
+        <tr>
+            <td>
+                Status code: {{log_info["exit_code"]}}
+            </td>
+            <td>
+                Download files: 
+                <a href={{log_info["stdout_url"]}}>stdout</a>
+                <a href={{log_info["stderr_url"]}}>stderr</a>
+            </td>
+            <td>
+                Time: {{log_info["time"]}}
+            </td>
+        </tr>
+    </table>
+{% endmacro %}

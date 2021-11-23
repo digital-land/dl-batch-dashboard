@@ -16,22 +16,14 @@
     width: 100%;
 }
 
+.build-failure {
+    background-color: red;
+}
+
 .build-col {
     width: 33.3%;
     padding: 2rem;
     word-wrap:break-word;
-}
-
-.panel-build-success {
-    background-color: #32cd32ba !important;
-}
-
-.panel-build-failure {
-    background-color: #ff0000b5 !important;
-}
-
-.panel-build-stopped {
-    background-color: #e8e816 !important;
 }
 
 .filters-container {

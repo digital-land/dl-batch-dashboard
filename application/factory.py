@@ -3,7 +3,6 @@ import os
 from flask import Flask, render_template
 from flask.cli import load_dotenv
 from jinja2 import PackageLoader, PrefixLoader, ChoiceLoader
-from application.db import init_db
 
 if os.environ["FLASK_ENV"] == "production":
     dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
@@ -16,7 +15,6 @@ def create_app(config_filename):
     register_errorhandlers(app)
     register_blueprints(app)
     register_filters(app)
-    init_db()
     #register_templates(app)
     return app
 
