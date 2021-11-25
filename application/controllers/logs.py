@@ -48,11 +48,11 @@ def create_log(logs, log_times, log_date, key, val):
     log_dict["time"] = log_times[key]
     log_dict["stdout_url"] = (
         "https://dl-batch-logs.s3.eu-west-2.amazonaws.com/"
-        + f"{log_date}/{key}/stdout.log"
+        + f"{log_date}/{key}/stdout.txt"
     )
     log_dict["stderr_url"] = (
         "https://dl-batch-logs.s3.eu-west-2.amazonaws.com/"
-        + f"{log_date}/{key}/stderr.log"
+        + f"{log_date}/{key}/stderr.txt"
     )
 
 
@@ -80,7 +80,7 @@ def get_log_statuses():
     return_code_urls = [
         "https://dl-batch-logs.s3.eu-west-2.amazonaws.com/{}".format(item["Key"])
         for item in json_output
-        if item["Key"].endswith("exit_code.log")
+        if item["Key"].endswith("exit_code.txt")
     ]
     with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executor:
         future_to_url = {
